@@ -104,6 +104,13 @@ list2 = repo_descs
 dictionary = {'names': list1, 'description': list2}
 
 ## put this together into a dataframe
-df = pd.DataFrame({'names':repo_names,'descriptions':repo_descs})
+#df = pd.DataFrame({'names':repo_names,'descriptions':repo_descs})
+
+a = {'names':repo_names,'descriptions':repo_descs}
+df = pd.DataFrame.from_dict(a, orient='index')
+df = df.transpose()
+
+
+
 
 df.to_csv('/Users/hantswilliams/Desktop/githubtrending.csv')
