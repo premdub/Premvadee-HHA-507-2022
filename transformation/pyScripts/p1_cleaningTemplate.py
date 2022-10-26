@@ -1,4 +1,9 @@
+from lib2to3.pgen2.pgen import DFAState
 import pandas as pd
+import datetime as dt
+import uuid
+import numpy as np
+
 import datetime as dt
 import uuid 
 import numpy as np
@@ -6,8 +11,11 @@ import numpy as np
 
 # load in messy data 
 df = pd.read_csv('transformation/dataFiles/raw/113243405_StonyBrookUniversityHospital_standardcharges.csv')
+<<<<<<< Updated upstream
 
 df
+=======
+>>>>>>> Stashed changes
 
 # get a count of the number of rows and columns
 countRows, countColumns = df.shape
@@ -31,13 +39,17 @@ list(df)
 ############## COLUMN NAMES ##############
 ############## COLUMN NAMES ##############
 
+<<<<<<< Updated upstream
 df.columns 
 column_names = list(df)
 
+=======
+df.columns
+column_names = last(df)
+>>>>>>> Stashed changes
 
 # remove all special characters and whitespace ' ' from column names
-df.columns = df.columns.str.replace('[^A-Za-z0-9]+', '_') ## regex 
-list(df)
+df.columns = df.columns.str.replace('[^A-Za-z0-9]+', '_') ## regex
 
 # renaming columns
 df = df.rename(columns={'Code':'billing_code'}) # rename the column, where the first value is the old name and the second value is the new name
@@ -49,7 +61,7 @@ df = df.rename(columns={
     })
 
 # change all column names to lowercase
-df.columns = df.columns.str.lower()
+
 
 # change all column names to upper case
 df.columns = df.columns.str.upper()
@@ -58,7 +70,11 @@ df.columns = df.columns.str.upper()
 df.columns = df.columns.str.replace(' ', '_')
 
 # droping columns
+<<<<<<< Updated upstream
 df.drop(['billing_code'], axis=1, inplace=True, errors='ignore') # remember this is CASE SENSITIVE
+=======
+df.drop(['billing_code', 'description', 'Code_type'], axis=1, inplace=True) # remember this is CASE SENSITIVE
+>>>>>>> Stashed changes
 df.columns
 
 ############## REMOVING WHITESPACE ##############
@@ -162,4 +178,4 @@ def create_id():
     return uuid.uuid4()
 
 ## create a new column that will have a unique id for each row
-df['id'] = df.apply(lambda row: create_id(), axis=1)
+df['id'] = df.apply(lambda row: create_id(), axis=1)    
